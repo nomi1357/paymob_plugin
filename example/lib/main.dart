@@ -218,21 +218,21 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              RaisedButton(
+              MaterialButton(
                 onPressed: () async {
                   await authenticateRequest();
                 },
                 child: Text('Authentication Request'),
               ),
               Text('auth: $_auth'),
-              RaisedButton(
+              MaterialButton(
                 onPressed: () async {
                   await registerOrder();
                 },
                 child: Text('Order Registration API'),
               ),
               Text('orderId: $_orderId'),
-              RaisedButton(
+              MaterialButton(
                 onPressed: () async {
                   await requestPaymentKey();
                 },
@@ -240,13 +240,13 @@ class _MyAppState extends State<MyApp> {
               ),
               Text('paymentKey: $_paymentKey'),
               Divider(),
-              RaisedButton(
+              MaterialButton(
                 onPressed: () async {
                   await startPayActivityNoToken();
                 },
                 child: Text('startPayActivityNoToken'),
               ),
-              RaisedButton(
+              MaterialButton(
                 onPressed: () async {
                   await startPayActivityToken();
                 },
