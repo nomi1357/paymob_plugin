@@ -19,21 +19,21 @@ class PaymentKeyRequest {
     this.lockOrderWhenPaid,
   });
 
-  String? authToken;
-  String? amountCents;
-  int? expiration;
-  String? orderId;
-  BillingData? billingData;
-  String? currency;
-  int? integrationId;
-  String? lockOrderWhenPaid;
+  String authToken;
+  String amountCents;
+  int expiration;
+  String orderId;
+  BillingData billingData;
+  String currency;
+  int integrationId;
+  String lockOrderWhenPaid;
 
   Map<String, dynamic> toJson() => {
         "auth_token": authToken == null ? null : authToken,
         "amount_cents": amountCents == null ? null : amountCents,
         "expiration": expiration == null ? null : expiration,
         "order_id": orderId == null ? null : orderId,
-        "billing_data": billingData == null ? null : billingData!.toJson(),
+        "billing_data": billingData == null ? null : billingData.toJson(),
         "currency": currency == null ? null : currency,
         "integration_id": integrationId == null ? null : integrationId,
         "lock_order_when_paid":
@@ -58,19 +58,19 @@ class BillingData {
     this.state,
   });
 
-  String? apartment;
-  String? email;
-  String? floor;
-  String? firstName;
-  String? street;
-  String? building;
-  String? phoneNumber;
-  String? shippingMethod;
-  String? postalCode;
-  String? city;
-  String? country;
-  String? lastName;
-  String? state;
+  String apartment;
+  String email;
+  String floor;
+  String firstName;
+  String street;
+  String building;
+  String phoneNumber;
+  String shippingMethod;
+  String postalCode;
+  String city;
+  String country;
+  String lastName;
+  String state;
 
   Map<String, dynamic> toJson() => {
         "apartment": apartment == null ? null : apartment,

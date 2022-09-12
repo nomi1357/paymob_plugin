@@ -14,9 +14,9 @@ class PaymentResult {
     this.maskedPan,
   });
 
-  String? dataMessage;
-  String? token;
-  String? maskedPan;
+  String dataMessage;
+  String token;
+  String maskedPan;
 
   factory PaymentResult.fromJson(Map<String, dynamic> json) => PaymentResult(
         dataMessage: json["data_message"] == null ? null : json["data_message"],
