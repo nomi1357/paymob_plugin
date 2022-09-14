@@ -15,7 +15,7 @@ class PaymobPlugin {
   static Future<String> authenticateRequest(String apiKey) async {
     try {
       http.Response response =
-          await http.post('https://accept.paymob.com/api/auth/tokens',
+          await http.post('https://pakistan.paymob.com/api/auth/tokens',
               headers: <String, String>{
                 'Content-Type': 'application/json; charset=UTF-8',
               },
@@ -35,7 +35,7 @@ class PaymobPlugin {
   static Future<int> registerOrder(Order order) async {
     try {
       http.Response response =
-          await http.post('https://accept.paymob.com/api/ecommerce/orders',
+          await http.post('https://pakistan.paymob.com/api/ecommerce/orders',
               headers: <String, String>{
                 'Content-Type': 'application/json; charset=UTF-8',
               },
@@ -56,7 +56,7 @@ class PaymobPlugin {
       PaymentKeyRequest paymentKeyRequest) async {
     try {
       http.Response response = await http.post(
-          'https://accept.paymob.com/api/acceptance/payment_keys',
+          'https://pakistan.paymob.com/api/acceptance/payment_keys',
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           },

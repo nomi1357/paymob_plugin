@@ -36,9 +36,9 @@ class Order {
         "items": items == null
             ? null
             : List<dynamic>.from(items.map((x) => x.toJson())),
-        "shipping_data": shippingData == null ? null : shippingData.toJson(),
-        "shipping_details":
-            shippingDetails == null ? null : shippingDetails.toJson(),
+        // "shipping_data": shippingData == null ? null : shippingData.toJson(),
+        // "shipping_details":
+        //     shippingDetails == null ? null : shippingDetails.toJson(),
       };
 }
 

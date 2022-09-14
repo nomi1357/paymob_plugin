@@ -18,7 +18,9 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String apiKey =
-      'ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRBMk1qZ3dMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuMFVLTTZLZFNhcExTaWo0MWE5MVJ6UU5fcDJ2bm41ZEYyaG11YlQzb2Y3aVVMV0RTLTFXWjZlRnhSYzRtckxINVFkQkFpckJ3OHNONFEyRUNfamMxOHc=';
+  'ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRJd056RXNJbTVoYldVaU9pSXhOall6TURjeE16WXlMakl4TkRVME5DSjkuZ0NiQnNiaW12SUswcGZzV084Q1RNUWtQUjFvOGpFdDYtdGY3UWFMeTdUWnU3S3FWYXBaNlNqMlZYMGladVh6Yk9PWkhzRmRDdVdaeUVQc0N3QnZYaXc=';
+  // 'ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRJd056RXNJbTVoYldVaU9pSnBibWwwYVdGc0luMC5PSkJtekdKc0JEZEhsc1lxMTcwWkhwVkVkbGNEQ2FvSVJTRXhTZnhNN0I2V09WaUZWME1TOVViVTJkYzg0ZlRiMndoY0hFSzdlM3hGV2dfWUFyemRzdw==';
+      // 'ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRBMk1qZ3dMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuMFVLTTZLZFNhcExTaWo0MWE5MVJ6UU5fcDJ2bm41ZEYyaG11YlQzb2Y3aVVMV0RTLTFXWjZlRnhSYzRtckxINVFkQkFpckJ3OHNONFEyRUNfamMxOHc=';
   String _auth = '';
   int _orderId;
   String _paymentKey = '';
@@ -51,44 +53,44 @@ class _MyAppState extends State<MyApp> {
         Order(
           authToken: _auth,
           deliveryNeeded: "false",
-          amountCents: "100",
-          currency: "EGP",
-          merchantOrderId: 19,
+          amountCents: "2000",
+          currency: "PKR",
+          merchantOrderId: 1215,
           items: [
             Item(
                 name: "ASC1515",
-                amountCents: "500000",
+                amountCents: "1000",
                 description: "Smart Watch",
-                quantity: "1"),
+                quantity: "1",),
             Item(
                 name: "ERT6565",
-                amountCents: "200000",
+                amountCents: "1000",
                 description: "Power Bank",
-                quantity: "1")
+                quantity: "1",)
           ],
-          shippingData: ShippingData(
-              apartment: "803",
-              email: "claudette09@exa.com",
-              floor: "42",
-              firstName: "Clifford",
-              street: "Ethan Land",
-              building: "8028",
-              phoneNumber: "+86(8)9135210487",
-              postalCode: "01898",
-              extraDescription: "8 Ram , 128 Giga",
-              city: "Jaskolskiburgh",
-              country: "CR",
-              lastName: "Nicolas",
-              state: "Utah"),
-          shippingDetails: ShippingDetails(
-              notes: "test",
-              numberOfPackages: 1,
-              weight: 1,
-              weightUnit: "Kilogram",
-              length: 1,
-              width: 1,
-              height: 1,
-              contents: "product of some sorts"),
+          // shippingData: ShippingData(
+          //     apartment: "803",
+          //     email: "claudette09@exa.com",
+          //     floor: "42",
+          //     firstName: "Clifford",
+          //     street: "Ethan Land",
+          //     building: "8028",
+          //     phoneNumber: "+86(8)9135210487",
+          //     postalCode: "01898",
+          //     extraDescription: "8 Ram , 128 Giga",
+          //     city: "Jaskolskiburgh",
+          //     country: "CR",
+          //     lastName: "Nicolas",
+          //     state: "Utah"),
+          // shippingDetails: ShippingDetails(
+          //     notes: "test",
+          //     numberOfPackages: 1,
+          //     weight: 1,
+          //     weightUnit: "Kilogram",
+          //     length: 1,
+          //     width: 1,
+          //     height: 1,
+          //     contents: "product of some sorts"),
         ),
       );
       if (!mounted) return;
@@ -110,7 +112,7 @@ class _MyAppState extends State<MyApp> {
       String result = await PaymobPlugin.requestPaymentKey(
         PaymentKeyRequest(
           authToken: _auth,
-          amountCents: "100",
+          amountCents: "2000",
           expiration: 3600,
           orderId: _orderId.toString(),
           billingData: BillingData(
@@ -126,8 +128,8 @@ class _MyAppState extends State<MyApp> {
               country: "CR",
               lastName: "Nicolas",
               state: "Utah"),
-          currency: "EGP",
-          integrationId: 273760,
+          currency: "PKR",
+          integrationId: 12740,
           lockOrderWhenPaid: "false",
         ),
       );
@@ -152,7 +154,7 @@ class _MyAppState extends State<MyApp> {
         saveCardDefault: false,
         showSaveCard: true,
         themeColor: Color(0xFF002B36),
-        language: "ar",
+        language: "en",
         actionbar: true,
       ));
       if (!mounted) return;
@@ -177,7 +179,7 @@ class _MyAppState extends State<MyApp> {
         saveCardDefault: false,
         showSaveCard: true,
         themeColor: Color(0xFF002B36),
-        language: "ar",
+        language: "en",
         actionbar: true,
         token: _token,
         maskedPanNumber: _maskedPan,
