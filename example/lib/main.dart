@@ -53,9 +53,9 @@ class _MyAppState extends State<MyApp> {
         Order(
           authToken: _auth,
           deliveryNeeded: "false",
-          amountCents: "2000",
+          amountCents: "20000",
           currency: "PKR",
-          merchantOrderId: 1215,
+          merchantOrderId: 1219,
           items: [
             Item(
                 name: "ASC1515",

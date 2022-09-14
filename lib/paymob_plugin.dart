@@ -86,7 +86,7 @@ class PaymobPlugin {
     }
   }
 
-  //start pay activity with tokes
+  //start pay activity with tokens
   static Future<String> startPayActivityToken(Payment payment) async {
     try {
       final String result = await _channel.invokeMethod(
