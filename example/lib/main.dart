@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
           deliveryNeeded: "false",
           amountCents: "20000",
           currency: "PKR",
-          merchantOrderId: 1219,
+          merchantOrderId: 1232,
           items: [
             Item(
                 name: "ASC1515",
@@ -152,7 +152,7 @@ class _MyAppState extends State<MyApp> {
       PaymentResult result = await PaymobPlugin.startPayActivityNoToken(Payment(
         paymentKey: _paymentKey,
         saveCardDefault: false,
-        showSaveCard: true,
+        showSaveCard: false,
         themeColor: Color(0xFF002B36),
         language: "en",
         actionbar: true,
