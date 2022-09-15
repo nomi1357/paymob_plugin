@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:paymob_plugin/paymob_plugin.dart';
+import 'package:paymob_plugin/paymob_plugin_latest.dart';
 import 'package:paymob_plugin/models/payment.dart';
 import 'package:paymob_plugin/models/order.dart';
 import 'package:paymob_plugin/models/payment_key_request.dart';
