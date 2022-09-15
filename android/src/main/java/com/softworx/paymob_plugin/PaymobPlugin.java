@@ -13,7 +13,7 @@ import com.paymob.acceptsdk.PayActivity;
 import com.paymob.acceptsdk.PayActivityIntentKeys;
 import com.paymob.acceptsdk.PayResponseKeys;
 import com.paymob.acceptsdk.SaveCardResponseKeys;
-// import com.paymob.acceptsdk.ThreeDSecureWebViewActivty;
+import com.paymob.acceptsdk.ThreeDSecureWebViewActivty;
 import com.softworx.paymob_plugin.models.payment.Converter;
 import com.softworx.paymob_plugin.models.payment.Payment;
 import com.softworx.paymob_plugin.models.result.PaymentResult;
@@ -68,8 +68,8 @@ public class PaymobPlugin implements FlutterPlugin, MethodCallHandler, ActivityA
     pay_intent.putExtra("language",payment.getLanguage());
 
     activity.startActivityForResult(pay_intent, ACCEPT_PAYMENT_REQUEST);
-    // Intent secure_intent = new Intent(context, ThreeDSecureWebViewActivty.class);
-    // secure_intent.putExtra("ActionBar",payment.getActionbar());
+    Intent secure_intent = new Intent(context, ThreeDSecureWebViewActivty.class);
+    secure_intent.putExtra("ActionBar",payment.getActionbar());
   }
 
   public void StartPayActivityToken() {
@@ -113,7 +113,7 @@ public class PaymobPlugin implements FlutterPlugin, MethodCallHandler, ActivityA
 
   private void putNormalExtras(Intent intent) {
     intent.putExtra(PayActivityIntentKeys.PAYMENT_KEY, payment.getPaymentKey());
-    // intent.putExtra(PayActivityIntentKeys.THREE_D_SECURE_ACTIVITY_TITLE, "Verification");
+    intent.putExtra(PayActivityIntentKeys.THREE_D_SECURE_ACTIVITY_TITLE, "Verification");
   }
 
   @Override
@@ -172,9 +172,7 @@ public class PaymobPlugin implements FlutterPlugin, MethodCallHandler, ActivityA
 
       if (resultCode == IntentConstants.USER_CANCELED) {
         // User canceled and did no payment request was fired
-        Toast.makeText(app.getBaseContext(),"User canceled!!", 
-                Toast.LENGTH_SHORT).show();
-        finishWithError("USER_CANCELED", "User canceled!!", null);
+        finishWithError("USER_CANCELED", "User canceled!!!", null);
       } else if (resultCode == IntentConstants.MISSING_ARGUMENT) {
         // You forgot to pass an important key-value pair in the intent's extras
         finishWithError("MISSING_ARGUMENT", "Missing Argument == " + extras.getString(IntentConstants.MISSING_ARGUMENT_VALUE), null);
@@ -185,7 +183,6 @@ public class PaymobPlugin implements FlutterPlugin, MethodCallHandler, ActivityA
         // User attempted to pay but their transaction was rejected
 
         // Use the static keys declared in PayResponseKeys to extract the fields you want
-
         finishWithError("TRANSACTION_REJECTED", extras.getString(PayResponseKeys.DATA_MESSAGE), null);
       } else if (resultCode == IntentConstants.TRANSACTION_REJECTED_PARSING_ISSUE) {
         // User attempted to pay but their transaction was rejected. An error occured while reading the returned JSON
@@ -199,9 +196,10 @@ public class PaymobPlugin implements FlutterPlugin, MethodCallHandler, ActivityA
       } else if (resultCode == IntentConstants.TRANSACTION_SUCCESSFUL_PARSING_ISSUE) {
         // User finished their payment successfully. An error occured while reading the returned JSON.
         finishWithError("TRANSACTION_SUCCESSFUL_PARSING_ISSUE", "TRANSACTION_SUCCESSFUL - Parsing Issue", null);
-        // ToastMaker.displayShortToast(this, extras.getString(IntentConstants.RAW_PAY_RESPONSE));
       } else if (resultCode == IntentConstants.TRANSACTION_SUCCESSFUL_CARD_SAVED) {
         // User finished their payment successfully and card was TRANSACTION_SUCCESSFUL_CARD_SAVEDsaved.
+        // ToastMaker.displayLongToast(this, "data " + extras.getString(PayResponseKeys.DATA_MESSAGE));
+        // Log.d("token", "onActivityResult: "+extras.get(SaveCardResponseKeys.TOKEN));
         PaymentResult paymentResult= new PaymentResult();
         paymentResult.setToken(extras.getString(SaveCardResponseKeys.TOKEN));
         paymentResult.setMaskedPan(extras.getString(SaveCardResponseKeys.MASKED_PAN));
@@ -215,17 +213,17 @@ public class PaymobPlugin implements FlutterPlugin, MethodCallHandler, ActivityA
           e.printStackTrace();
         }
       } 
-      // else if (resultCode == IntentConstants.USER_CANCELED_3D_SECURE_VERIFICATION) {
+      else if (resultCode == IntentConstants.USER_CANCELED_3D_SECURE_VERIFICATION) {
 
-      //   // Note that a payment process was attempted. You can extract the original returned values
-      //   // Use the static keys declared in PayResponseKeys to extract the fields you want
-      //   finishWithError("USER_CANCELED_3D_SECURE_VERIFICATION", "User canceled 3-d scure verification!!", extras.getString(PayResponseKeys.PENDING));
-      // } else if (resultCode == IntentConstants.USER_CANCELED_3D_SECURE_VERIFICATION_PARSING_ISSUE) {
+        // Note that a payment process was attempted. You can extract the original returned values
+        // Use the static keys declared in PayResponseKeys to extract the fields you want
+               finishWithError("USER_CANCELED_3D_SECURE_VERIFICATION", "User canceled 3-d scure verification!!", extras.getString(PayResponseKeys.PENDING));
+      } else if (resultCode == IntentConstants.USER_CANCELED_3D_SECURE_VERIFICATION_PARSING_ISSUE) {
 
-      //   // Note that a payment process was attempted.
-      //   // User finished their payment successfully. An error occured while reading the returned JSON.
-      //   finishWithError("USER_CANCELED_3D_SECURE_VERIFICATION_PARSING_ISSUE", "User canceled 3-d scure verification - Parsing Issue!!", extras.getString(IntentConstants.RAW_PAY_RESPONSE));
-      // } 
+        // Note that a payment process was attempted.
+        // User finished their payment successfully. An error occured while reading the returned JSON.
+        finishWithError("USER_CANCELED_3D_SECURE_VERIFICATION_PARSING_ISSUE", "User canceled 3-d scure verification - Parsing Issue!!", extras.getString(IntentConstants.RAW_PAY_RESPONSE));
+      } 
       else {
         return false;
       }

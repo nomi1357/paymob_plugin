@@ -19,8 +19,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String apiKey =
   'ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRJd056RXNJbTVoYldVaU9pSXhOall6TURjeE16WXlMakl4TkRVME5DSjkuZ0NiQnNiaW12SUswcGZzV084Q1RNUWtQUjFvOGpFdDYtdGY3UWFMeTdUWnU3S3FWYXBaNlNqMlZYMGladVh6Yk9PWkhzRmRDdVdaeUVQc0N3QnZYaXc=';
-  // 'ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRJd056RXNJbTVoYldVaU9pSnBibWwwYVdGc0luMC5PSkJtekdKc0JEZEhsc1lxMTcwWkhwVkVkbGNEQ2FvSVJTRXhTZnhNN0I2V09WaUZWME1TOVViVTJkYzg0ZlRiMndoY0hFSzdlM3hGV2dfWUFyemRzdw==';
-      // 'ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2TVRBMk1qZ3dMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuMFVLTTZLZFNhcExTaWo0MWE5MVJ6UU5fcDJ2bm41ZEYyaG11YlQzb2Y3aVVMV0RTLTFXWjZlRnhSYzRtckxINVFkQkFpckJ3OHNONFEyRUNfamMxOHc=';
   String _auth = '';
   int _orderId;
   String _paymentKey = '';
@@ -53,20 +51,20 @@ class _MyAppState extends State<MyApp> {
         Order(
           authToken: _auth,
           deliveryNeeded: "false",
-          amountCents: "20000",
+          amountCents: "25000",
           currency: "PKR",
-          merchantOrderId: 1232,
+          merchantOrderId: 1258,
           items: [
             Item(
                 name: "ASC1515",
-                amountCents: "1000",
+                amountCents: "25000",
                 description: "Smart Watch",
                 quantity: "1",),
-            Item(
-                name: "ERT6565",
-                amountCents: "1000",
-                description: "Power Bank",
-                quantity: "1",)
+            // Item(
+            //     name: "ERT6565",
+            //     amountCents: "1000",
+            //     description: "Power Bank",
+            //     quantity: "1",)
           ],
           // shippingData: ShippingData(
           //     apartment: "803",
@@ -112,7 +110,7 @@ class _MyAppState extends State<MyApp> {
       String result = await PaymobPlugin.requestPaymentKey(
         PaymentKeyRequest(
           authToken: _auth,
-          amountCents: "2000",
+          amountCents: "25000",
           expiration: 3600,
           orderId: _orderId.toString(),
           billingData: BillingData(
@@ -152,7 +150,7 @@ class _MyAppState extends State<MyApp> {
       PaymentResult result = await PaymobPlugin.startPayActivityNoToken(Payment(
         paymentKey: _paymentKey,
         saveCardDefault: false,
-        showSaveCard: false,
+        showSaveCard: true,
         themeColor: Color(0xFF002B36),
         language: "en",
         actionbar: true,
@@ -244,6 +242,7 @@ class _MyAppState extends State<MyApp> {
               Divider(),
               MaterialButton(
                 onPressed: () async {
+                  print(_paymentKey);
                   await startPayActivityNoToken();
                 },
                 child: Text('startPayActivityNoToken'),
