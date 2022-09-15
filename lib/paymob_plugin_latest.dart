@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-import 'package:paymob_plugin_latest/models/payment_key_request.dart';
-import 'package:paymob_plugin_latest/models/payment_result.dart';
+import 'package:paymob_plugin/models/payment_key_request.dart';
+import 'package:paymob_plugin/models/payment_result.dart';
 import 'models/order.dart';
 import 'models/payment.dart';
 
