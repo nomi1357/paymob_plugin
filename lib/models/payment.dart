@@ -21,15 +21,15 @@ class Payment {
     this.customer,
   });
 
-  String paymentKey;
-  bool saveCardDefault;
-  bool showSaveCard;
-  Color themeColor;
-  String language;
-  bool actionbar;
-  String token;
-  String maskedPanNumber;
-  Customer customer;
+  String? paymentKey;
+  bool? saveCardDefault;
+  bool? showSaveCard;
+  Color? themeColor;
+  String? language;
+  bool? actionbar;
+  String? token;
+  String? maskedPanNumber;
+  Customer? customer;
 
   Map<String, dynamic> toJson() => {
         "payment_key": paymentKey == null ? null : paymentKey,
@@ -37,12 +37,12 @@ class Payment {
         "show_save_card": showSaveCard == null ? null : showSaveCard,
         "theme_color": themeColor == null
             ? null
-            : '#${themeColor.value.toRadixString(16)}',
+            : '#${themeColor!.value.toRadixString(16)}',
         "language": language == null ? null : language,
         "actionbar": actionbar == null ? null : actionbar,
         "token": token == null ? null : token,
         "masked_pan_number": maskedPanNumber == null ? null : maskedPanNumber,
-        "customer": customer == null ? null : customer.toJson(),
+        "customer": customer == null ? null : customer!.toJson(),
       };
 }
 
@@ -61,17 +61,17 @@ class Customer {
     this.postalCode,
   });
 
-  String firstName;
-  String lastName;
-  String building;
-  String floor;
-  String apartment;
-  String city;
-  String state;
-  String country;
-  String email;
-  String phoneNumber;
-  String postalCode;
+  String? firstName;
+  String? lastName;
+  String? building;
+  String? floor;
+  String? apartment;
+  String? city;
+  String? state;
+  String? country;
+  String? email;
+  String? phoneNumber;
+  String? postalCode;
 
   Map<String, dynamic> toJson() => {
         "first_name": firstName == null ? null : firstName,

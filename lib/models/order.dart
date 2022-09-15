@@ -18,14 +18,14 @@ class Order {
     this.shippingDetails,
   });
 
-  String authToken;
-  String deliveryNeeded;
-  String amountCents;
-  String currency;
-  int merchantOrderId;
-  List<Item> items;
-  ShippingData shippingData;
-  ShippingDetails shippingDetails;
+  String? authToken;
+  String? deliveryNeeded;
+  String? amountCents;
+  String? currency;
+  int? merchantOrderId;
+  List<Item>? items;
+  ShippingData? shippingData;
+  ShippingDetails? shippingDetails;
 
   Map<String, dynamic> toJson() => {
         "auth_token": authToken == null ? null : authToken,
@@ -35,7 +35,7 @@ class Order {
         "merchant_order_id": merchantOrderId == null ? null : merchantOrderId,
         "items": items == null
             ? null
-            : List<dynamic>.from(items.map((x) => x.toJson())),
+            : List<dynamic>.from(items!.map((x) => x.toJson())),
         // "shipping_data": shippingData == null ? null : shippingData.toJson(),
         // "shipping_details":
         //     shippingDetails == null ? null : shippingDetails.toJson(),
@@ -50,10 +50,10 @@ class Item {
     this.quantity,
   });
 
-  String name;
-  String amountCents;
-  String description;
-  String quantity;
+  String? name;
+  String? amountCents;
+  String? description;
+  String? quantity;
 
   Map<String, dynamic> toJson() => {
         "name": name == null ? null : name,
@@ -80,19 +80,19 @@ class ShippingData {
     this.state,
   });
 
-  String apartment;
-  String email;
-  String floor;
-  String firstName;
-  String street;
-  String building;
-  String phoneNumber;
-  String postalCode;
-  String extraDescription;
-  String city;
-  String country;
-  String lastName;
-  String state;
+  String? apartment;
+  String? email;
+  String? floor;
+  String? firstName;
+  String? street;
+  String? building;
+  String? phoneNumber;
+  String? postalCode;
+  String? extraDescription;
+  String? city;
+  String? country;
+  String? lastName;
+  String? state;
 
   Map<String, dynamic> toJson() => {
         "apartment": apartment == null ? null : apartment,
@@ -123,14 +123,14 @@ class ShippingDetails {
     this.contents,
   });
 
-  String notes;
-  int numberOfPackages;
-  int weight;
-  String weightUnit;
-  int length;
-  int width;
-  int height;
-  String contents;
+  String? notes;
+  int? numberOfPackages;
+  int? weight;
+  String? weightUnit;
+  int? length;
+  int? width;
+  int? height;
+  String? contents;
 
   Map<String, dynamic> toJson() => {
         "notes": notes == null ? null : notes,
