@@ -51,13 +51,13 @@ class _MyAppState extends State<MyApp> {
         Order(
           authToken: _auth,
           deliveryNeeded: "false",
-          amountCents: "25000",
+          amountCents: "35000",
           currency: "PKR",
-          merchantOrderId: 1258,
+          merchantOrderId: 1262,
           items: [
             Item(
                 name: "ASC1515",
-                amountCents: "25000",
+                amountCents: "35000",
                 description: "Smart Watch",
                 quantity: "1",),
             // Item(
@@ -110,7 +110,7 @@ class _MyAppState extends State<MyApp> {
       String result = await PaymobPlugin.requestPaymentKey(
         PaymentKeyRequest(
           authToken: _auth,
-          amountCents: "25000",
+          amountCents: "35000",
           expiration: 3600,
           orderId: _orderId.toString(),
           billingData: BillingData(

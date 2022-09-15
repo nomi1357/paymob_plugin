@@ -13,7 +13,7 @@ import com.paymob.acceptsdk.PayActivity;
 import com.paymob.acceptsdk.PayActivityIntentKeys;
 import com.paymob.acceptsdk.PayResponseKeys;
 import com.paymob.acceptsdk.SaveCardResponseKeys;
-import com.paymob.acceptsdk.ThreeDSecureWebViewActivty;
+// import com.paymob.acceptsdk.ThreeDSecureWebViewActivty;
 import com.softworx.paymob_plugin.models.payment.Converter;
 import com.softworx.paymob_plugin.models.payment.Payment;
 import com.softworx.paymob_plugin.models.result.PaymentResult;
@@ -68,8 +68,8 @@ public class PaymobPlugin implements FlutterPlugin, MethodCallHandler, ActivityA
     pay_intent.putExtra("language",payment.getLanguage());
 
     activity.startActivityForResult(pay_intent, ACCEPT_PAYMENT_REQUEST);
-    Intent secure_intent = new Intent(context, ThreeDSecureWebViewActivty.class);
-    secure_intent.putExtra("ActionBar",payment.getActionbar());
+    // Intent secure_intent = new Intent(context, ThreeDSecureWebViewActivty.class);
+    // secure_intent.putExtra("ActionBar",payment.getActionbar());
   }
 
   public void StartPayActivityToken() {
@@ -113,7 +113,7 @@ public class PaymobPlugin implements FlutterPlugin, MethodCallHandler, ActivityA
 
   private void putNormalExtras(Intent intent) {
     intent.putExtra(PayActivityIntentKeys.PAYMENT_KEY, payment.getPaymentKey());
-    intent.putExtra(PayActivityIntentKeys.THREE_D_SECURE_ACTIVITY_TITLE, "Verification");
+    // intent.putExtra(PayActivityIntentKeys.THREE_D_SECURE_ACTIVITY_TITLE, "Verification");
   }
 
   @Override
