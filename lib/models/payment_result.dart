@@ -19,8 +19,8 @@ class PaymentResult {
   String? maskedPan;
 
   factory PaymentResult.fromJson(Map<String, dynamic> json) => PaymentResult(
-        dataMessage: json["data_message"] == null ? null : json["data_message"],
-        token: json["token"] == null ? null : json["token"],
-        maskedPan: json["masked_pan"] == null ? null : json["masked_pan"],
+        dataMessage: json["data_message"] ?? json["data_message"],
+        token: json["token"] ?? json["token"],
+        maskedPan: json["masked_pan"]?? json["masked_pan"],
       );
 }
