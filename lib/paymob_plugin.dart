@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-import 'package:paymob_plugin/models/payment_key_request.dart';
-import 'package:paymob_plugin/models/payment_result.dart';
+import 'package:paymob_plugin_latest/models/payment_key_request.dart';
+import 'package:paymob_plugin_latest/models/payment_result.dart';
 import 'models/order.dart';
 import 'models/payment.dart';
 
@@ -15,7 +15,7 @@ class PaymobPlugin {
   static Future<String> authenticateRequest(String apiKey) async {
     try {
       http.Response response =
-          await http.post('https://pakistan.paymob.com/api/auth/tokens',
+          await http.post(Uri.parse('https://pakistan.paymob.com/api/auth/tokens'),
               headers: <String, String>{
                 'Content-Type': 'application/json; charset=UTF-8',
               },
@@ -35,7 +35,7 @@ class PaymobPlugin {
   static Future<int> registerOrder(Order order) async {
     try {
       http.Response response =
-          await http.post('https://pakistan.paymob.com/api/ecommerce/orders',
+          await http.post(Uri.parse('https://pakistan.paymob.com/api/ecommerce/orders'),
               headers: <String, String>{
                 'Content-Type': 'application/json; charset=UTF-8',
               },
@@ -56,7 +56,7 @@ class PaymobPlugin {
       PaymentKeyRequest paymentKeyRequest) async {
     try {
       http.Response response = await http.post(
-          'https://pakistan.paymob.com/api/acceptance/payment_keys',
+          Uri.parse('https://pakistan.paymob.com/api/acceptance/payment_keys'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           },
