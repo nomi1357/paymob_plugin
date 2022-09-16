@@ -1,4 +1,9 @@
+// include ':paymob_plugin'
+// include ':acceptsdk-release'
+// project(':paymob_plugin').projectDir = file('android')
+// project(':acceptsdk-release').projectDir = file('android/acceptsdk-release')
+
 include ':paymob_plugin'
-include ':acceptsdk-release'
+include ':acceptsdk'
 project(':paymob_plugin').projectDir = file('android')
-project(':acceptsdk-release').projectDir = file('android/acceptsdk-release')
+project(':acceptsdk').projectDir = file('android/acceptsdk')
